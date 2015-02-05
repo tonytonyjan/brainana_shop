@@ -1,0 +1,5 @@
+Description:
+    admin scaffold generator
+
+Example:
+    rails generate admin_scaffold model_name

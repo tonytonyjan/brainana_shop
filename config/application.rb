@@ -27,6 +27,8 @@ module BrainanaShop
       g.assets false
       g.helper false
       g.jbuilder false
+      g.skip_routes true
+      g.resource_route false
     end
   end
 end

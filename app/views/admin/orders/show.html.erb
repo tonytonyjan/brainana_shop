@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @admin_order.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @admin_order.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @admin_order.email %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @admin_order.address %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @admin_order.slug %>
+</p>
+
+<%= link_to 'Edit', edit_admin_order_path(@admin_order) %> |
+<%= link_to 'Back', admin_orders_path %>
