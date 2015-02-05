@@ -4,8 +4,8 @@ class CreateLineItems < ActiveRecord::Migration
       t.references :product, index: true
       t.references :cart, index: true
       t.references :order, index: true
-      t.decimal :unit_price
-      t.integer :quantity
+      t.decimal :unit_price, default: 0
+      t.integer :quantity, default: 0
 
       t.timestamps null: false
     end

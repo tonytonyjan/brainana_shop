@@ -13,6 +13,7 @@
       <td><%= product.name %></td>
       <td><%= product.description %></td>
       <td><%= product.price %></td>
+      <td><%= link_to '加入購物車', line_items_path(product_id: product.id), method: :post %></td>
     </tr>
     <% end %>
   </tbody>

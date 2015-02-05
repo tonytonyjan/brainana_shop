@@ -2,3 +2,8 @@ t_shirt:
   name: 繼承概念衫
   description: 好穿的汗衫
   price: 800
+
+book:
+  name: Ruby on Rails 自習手冊 - 成為鐵道工之路
+  description: 好書好書
+  price: 700
