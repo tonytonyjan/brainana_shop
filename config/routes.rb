@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'pages#index'
   resources :products, :orders, only: %i[show index]
   resource :cart, only: %i[show]
   namespace :admin do

@@ -29,6 +29,7 @@ module BrainanaShop
       g.jbuilder false
       g.skip_routes true
       g.resource_route false
+      g.test_framework false
     end
   end
 end
