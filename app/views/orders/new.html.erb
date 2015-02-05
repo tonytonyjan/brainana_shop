@@ -1,0 +1,8 @@
+<h1>填寫訂單</h1>
+<%= form_for @order do |f| %>
+  <%= f.text_field :last_name, placeholder: '姓' %>
+  <%= f.text_field :first_name, placeholder: '名' %>
+  <%= f.email_field :email, placeholder: '信箱' %>
+  <%= f.text_field :address, placeholder: '運送地址' %>
+  <%= f.submit '送出' %>
+<% end %>
