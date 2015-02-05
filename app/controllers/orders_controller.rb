@@ -9,9 +9,9 @@ class OrdersController < ApplicationController
 
   def create
     @order = CreateOrderCase.new(current_cart, order_params).create_order
-    redirect_to @order
-  rescue
-    render :new
+    redirect_to allpay_form_path(@order.slug)
+  # rescue
+  #   render :new
   end
 
 private

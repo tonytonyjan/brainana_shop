@@ -7,6 +7,10 @@ class Order < ActiveRecord::Base
     slug
   end
 
+  def price
+    line_items.to_a.sum(&:price)
+  end
+
 private
 
   def generate_slug
