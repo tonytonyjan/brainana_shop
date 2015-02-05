@@ -1,7 +1,7 @@
 <h1>我的購物車</h1>
 <table>
   <thead>
-    <tr><th>商品</th><td>單價</td><td>數量</td><td>小計</td></tr>
+    <tr><th>商品</th><th>單價</th><th>數量</th><th>小計</th><th></th></tr>
   </thead>
   <tbody>
     <% @line_items.each do |line_item| %>
@@ -10,6 +10,7 @@
       <td><%= line_item.unit_price %></td>
       <td><%= line_item.quantity %></td>
       <td><%= line_item.price %></td>
+      <td><%= link_to '移除', line_item, method: :delete %></td>
     </tr>
     <% end %>
   </tbody>
