@@ -7,7 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<nav>
+  <ul>
+    <li><%= link_to '首頁', root_path %></li>
+    <li><%= link_to '我的購物車', cart_path %></li>
+  </ul>
+</nav>
 <%= yield %>
 
 </body>
