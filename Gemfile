@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'adminscaffold'
+gem 'allpay_client', require: 'allpay'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
