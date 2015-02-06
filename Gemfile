@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'adminscaffold'
-gem 'allpay_client', require: 'allpay'
+gem 'allpay_client'
 gem 'settingslogic'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

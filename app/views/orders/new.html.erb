@@ -1,4 +1,7 @@
 <h1>填寫訂單</h1>
+
+<%= render 'shared/line_items' %>
+
 <%= form_for @order do |f| %>
   <%= f.text_field :last_name, placeholder: '姓' %>
   <%= f.text_field :first_name, placeholder: '名' %>

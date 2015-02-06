@@ -19,8 +19,7 @@ class Allpay::FormTest < ActiveSupport::TestCase
   end
 
   test 'Mac Value 是正確的' do
-    f = Allpay::Form.new(orders(:tony_order))
-    p f.CheckMacValue
-    # TODO
+    f = Allpay::Form.new(orders(:tony_order), MerchantTradeDate: '2015/02/06 08:07:02')
+    assert_equal f.CheckMacValue, 'C7C915DD96F11823CA104526E17A2AD1'
   end
 end

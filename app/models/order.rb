@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
   include SafeDestroyed
   has_many :line_items
+  has_many :transactions
   before_create :generate_slug
 
   def to_param
@@ -9,6 +10,10 @@ class Order < ActiveRecord::Base
 
   def price
     line_items.to_a.sum(&:price)
+  end
+
+  def paid?
+    transactions.exists?("params -> 'RtnCode' = '1'")
   end
 
 private

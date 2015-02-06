@@ -1,1 +1,8 @@
 <h1>訂單 #<%= @order.slug %></h1>
+
+<p>姓：<%= @order.first_name %></p>
+<p>名：<%= @order.last_name %></p>
+<p>信箱：<%= @order.email %></p>
+<p>地址：<%= @order.address %></p>
+<%= render 'shared/line_items' %>
+<p>付款狀態：<%= @order.paid? %></p>

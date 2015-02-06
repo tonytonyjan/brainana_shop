@@ -1,0 +1,15 @@
+<table>
+  <thead>
+    <tr><th>商品</th><th>單價</th><th>數量</th><th>小計</th></tr>
+  </thead>
+  <tbody>
+    <% @line_items.each do |line_item| %>
+    <tr>
+      <td><%= link_to line_item.product.name, line_item.product %></td>
+      <td><%= line_item.unit_price %></td>
+      <td><%= line_item.quantity %></td>
+      <td><%= line_item.price %></td>
+    </tr>
+    <% end %>
+    <tr><td></td><td></td><td></td><td><%= @total_price %></td></tr></tbody>
+</table>
