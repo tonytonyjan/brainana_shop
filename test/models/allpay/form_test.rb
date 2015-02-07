@@ -24,6 +24,6 @@ class Allpay::FormTest < ActiveSupport::TestCase
     f = Allpay::Form.new transaction,
       MerchantTradeDate: '2015/02/06 08:07:02',
       MerchantTradeNo: 'xxxyyy'
-    assert_equal '13161167FE98A99132537588A0F5E4D6', f.params[:CheckMacValue]
+    assert_equal '4DF044F83241CB731D4A4323CD7667FB', f.params[:CheckMacValue]
   end
 end
