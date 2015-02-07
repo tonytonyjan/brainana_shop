@@ -27,5 +27,13 @@ module UseCases
         order.transactions.create!
       end
     end
+
+    if Rails.env.development?
+      def fetch_transactions order
+        order.transactions.where(params: nil).find_each do |transaction|
+          transaction.update params: Allpay.client.query_trade_info(transaction.trade_number)
+        end
+      end
+    end
   end
 end

@@ -5,9 +5,12 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find params[:id]
+    UseCases::CartSystem.fetch_transactions @order if Rails.env.development?
     @line_items = @order.line_items.includes(:product)
     @total_price = @order.price
     @transactions = @order.transactions.order(created_at: :desc)
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, "找不到訂單編號 ##{params[:id]}"
   end
 
   def new

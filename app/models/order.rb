@@ -8,7 +8,7 @@ class Order < ActiveRecord::Base
   end
 
   def paid?
-    transactions.exists?("params -> 'RtnCode' = '1'")
+    transactions.find_by("params -> 'RtnCode' = '1' OR params -> 'TradeStatus' = '1'").present?
   end
 
 private
