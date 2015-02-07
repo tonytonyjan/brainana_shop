@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Admin Transactions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order</th>
+      <th>Params</th>
+      <th>Trade number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_transactions.each do |admin_transaction| %>
+      <tr>
+        <td><%= admin_transaction.order_id %></td>
+        <td><%= admin_transaction.params %></td>
+        <td><%= admin_transaction.trade_number %></td>
+        <td><%= link_to 'Show', admin_transaction %></td>
+        <td><%= link_to 'Edit', edit_admin_transaction_path(admin_transaction) %></td>
+        <td><%= link_to 'Destroy', admin_transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Transaction', new_admin_transaction_path %>

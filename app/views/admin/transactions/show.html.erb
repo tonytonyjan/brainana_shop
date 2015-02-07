@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @admin_transaction.order_id %>
+</p>
+
+<p>
+  <strong>Params:</strong>
+  <%= @admin_transaction.params %>
+</p>
+
+<p>
+  <strong>Trade number:</strong>
+  <%= @admin_transaction.trade_number %>
+</p>
+
+<%= link_to 'Edit', edit_admin_transaction_path(@admin_transaction) %> |
+<%= link_to 'Back', admin_transactions_path %>

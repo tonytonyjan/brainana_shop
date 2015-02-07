@@ -9,7 +9,6 @@
       <th>Last name</th>
       <th>Email</th>
       <th>Address</th>
-      <th>Slug</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,7 +20,6 @@
         <td><%= admin_order.last_name %></td>
         <td><%= admin_order.email %></td>
         <td><%= admin_order.address %></td>
-        <td><%= admin_order.slug %></td>
         <td><%= link_to 'Show', admin_order %></td>
         <td><%= link_to 'Edit', edit_admin_order_path(admin_order) %></td>
         <td><%= link_to 'Destroy', admin_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>

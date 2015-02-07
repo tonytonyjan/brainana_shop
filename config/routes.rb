@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :products, :carts
-    resources :orders, :transactions, only: %i[show index]
+    root action: :home
+    resources :products, :carts, :orders, :transactions
   end
 end

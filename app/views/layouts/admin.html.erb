@@ -7,7 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<nav>
+  <ul>
+    <% [Product, Cart, Order, Transaction].each do |klass| %>
+    <li><%= link_to klass.model_name.human, [:admin, klass] %></li>
+    <% end %>
+    <li><%= link_to '回前台', root_path %></li>
+  </ul>
+</nav>
 <%= yield %>
 
 </body>
