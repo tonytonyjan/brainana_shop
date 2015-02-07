@@ -1,6 +1,6 @@
 module UseCases
   module CartSystem
-    class Error < RuntimeError; end
+    class Error < StandardError; end
     class OrderIsPaid < Error; end
 
     module_function
@@ -12,7 +12,7 @@ module UseCases
       cart.line_items.create!(product: product, unit_price: product.price, quantity: 1)
     end
 
-    def create_order_from_cart cart, **params
+    def create_order_from_cart cart, params
       ActiveRecord::Base.transaction do
         order = Order.create! params
         cart.line_items.update_all(order_id: order.id, cart_id: nil)
