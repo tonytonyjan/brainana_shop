@@ -14,8 +14,10 @@
   </thead>
   <tbody>
     <% @transactions.each do |transaction| %>
+    <tr>
       <td><%= transaction.trade_number %></td>
-      <td><%= transaction.created_at %></td>
+      <td><%= l transaction.created_at %></td>
       <td><%= link_to '檢視', transaction %></td>
+    </tr>
     <% end %>
 </table>
