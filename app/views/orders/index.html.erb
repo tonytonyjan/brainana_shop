@@ -1,0 +1,16 @@
+<h1>瀏覽訂單</h1>
+
+<table>
+  <thead>
+    <tr><th>ID</th><th>建立時間</th><th>付款狀態</th><th></th></tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= order.created_at %></td>
+      <td><%= order.paid? %></td>
+      <td><%= link_to '檢視', order %></td>
+    </tr>
+    <% end %>
+</table>

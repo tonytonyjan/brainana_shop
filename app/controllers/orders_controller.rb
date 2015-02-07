@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
+  def index
+    @orders = Order.all
+  end
+
   def show
-    @order = Order.find_by slug: params[:id]
+    @order = Order.find params[:id]
     @line_items = @order.line_items.includes(:product)
     @total_price = @order.price
   end
