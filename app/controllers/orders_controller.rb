@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
     @order = Order.find params[:id]
     @line_items = @order.line_items.includes(:product)
     @total_price = @order.price
+    @transactions = @order.transactions.order(created_at: :desc)
   end
 
   def new
@@ -16,10 +17,10 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = CreateOrderCase.new(current_cart, order_params).create_order
-    redirect_to allpay_form_path(@order.slug)
-  rescue
-    render :new, alert: '出錯了'
+    @order = UseCases::CartSystem.create_order_from_cart current_cart, order_params
+    redirect_to allpay_form_path(@order)
+  rescue ActiveRecord::ActiveRecordError
+    render :new, alert: "出錯了：#{$!}"
   end
 
 private
