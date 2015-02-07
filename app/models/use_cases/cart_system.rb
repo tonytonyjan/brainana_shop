@@ -2,6 +2,7 @@ module UseCases
   module CartSystem
     class Error < StandardError; end
     class OrderIsPaid < Error; end
+    class CartIsEmpty < Error; end
 
     module_function
 
@@ -13,6 +14,7 @@ module UseCases
     end
 
     def create_order_from_cart cart, params
+      raise CartIsEmpty, 'Cart is empty' if cart.empty?
       ActiveRecord::Base.transaction do
         order = Order.create! params
         cart.line_items.update_all(order_id: order.id, cart_id: nil)

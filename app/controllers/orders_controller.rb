@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :set_line_items, only: %i[new create]
+
   def index
     @orders = Order.all
   end
@@ -14,21 +16,34 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new
-    @line_items = current_cart.line_items.includes(:product)
-    @total_price = current_cart.price
+    if current_cart.empty?
+      redirect_to request.referer, alert: '購物車是空的'
+    else
+      @order = Order.new
+    end
   end
 
   def create
     @order = UseCases::CartSystem.create_order_from_cart current_cart, order_params
     redirect_to allpay_form_path(@order)
+  rescue UseCases::CartSystem::CartIsEmpty
+    @order = Order.new order_params
+    flash.now.alert = '購物車是空的'
+    render :new
   rescue ActiveRecord::ActiveRecordError
-    render :new, alert: "出錯了：#{$!}"
+    @order = Order.new order_params
+    flash.now.alert = "出錯了：#{$!}"
+    render :new
   end
 
 private
 
   def order_params
     params.require(:order).permit(:first_name, :last_name, :email, :address)
+  end
+
+  def set_line_items
+    @line_items = current_cart.line_items.includes(:product)
+    @total_price = current_cart.price
   end
 end
