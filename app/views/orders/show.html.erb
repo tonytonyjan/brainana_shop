@@ -6,3 +6,16 @@
 <p>地址：<%= @order.address %></p>
 <%= render 'shared/line_items' %>
 <p>付款狀態：<%= @order.paid? %></p>
+<%= link_to '結帳去', allpay_form_path(@order) %>
+<h2>交易紀錄</h2>
+<table>
+  <thead>
+    <tr><th>交易編號</th><th>交易日期</th><th></th></tr>
+  </thead>
+  <tbody>
+    <% @transactions.each do |transaction| %>
+      <td><%= transaction.trade_number %></td>
+      <td><%= transaction.created_at %></td>
+      <td><%= link_to '檢視', transaction %></td>
+    <% end %>
+</table>
