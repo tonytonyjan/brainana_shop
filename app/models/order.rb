@@ -1,12 +1,7 @@
 class Order < ActiveRecord::Base
-  include SafeDestroyed
   has_many :line_items
   has_many :transactions
-  before_create :generate_slug
-
-  def to_param
-    slug
-  end
+  before_destroy :can_not_be_destroyed
 
   def price
     line_items.to_a.sum(&:price)
@@ -18,7 +13,7 @@ class Order < ActiveRecord::Base
 
 private
 
-  def generate_slug
-    self.slug = SecureRandom.hex(3)
+  def can_not_be_destroyed
+    false
   end
 end

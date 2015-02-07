@@ -1,6 +1,5 @@
 one:
   product: t_shirt 
   cart: my_cart
-  order: tony_order
   unit_price: 800
   quantity: 20
