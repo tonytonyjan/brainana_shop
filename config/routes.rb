@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   root 'pages#index'
+
   resources :products, only: %i[show index]
-  resources :orders, only: %i[show new create]
+  resources :orders, only: %i[show index new create]
+  resources :transactions, only: :show
+  resources :line_items, only: %i[create destroy]
+
   resource :cart, only: %i[show]
-  resources :line_items, only: %i[create destroy] # add to/remove from cart
 
   namespace :allpay do
-    get 'form/:slug', slug: /\w{6}/, action: :form, as: :form
+    get 'form/:order_id', action: :form, as: :form
     post :callback
   end
 
