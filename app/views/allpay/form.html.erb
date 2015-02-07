@@ -1,17 +1,9 @@
 <h1>處理中……</h1>
 
-<form action="<%= Allpay.client.api_host %>/Cashier/AioCheckOut" method="post">
-  <input type="text" name="MerchantID" value="<%= @allpay.MerchantID %>">
-  <input type="text" name="MerchantTradeNo" value="<%= @allpay.MerchantTradeNo %>">
-  <input type="text" name="MerchantTradeDate" value="<%= @allpay.MerchantTradeDate %>">
-  <input type="text" name="PaymentType" value="<%= @allpay.PaymentType %>">
-  <input type="text" name="TotalAmount" value="<%= @allpay.TotalAmount %>">
-  <input type="text" name="TradeDesc" value="<%= @allpay.TradeDesc %>">
-  <input type="text" name="ItemName" value="<%= @allpay.ItemName %>">
-  <input type="text" name="ReturnURL" value="<%= @allpay.ReturnURL %>">
-  <input type="text" name="ClientBackURL" value="<%= @allpay.ClientBackURL %>">
-  <input type="text" name="ChoosePayment" value="<%= @allpay.ChoosePayment %>">
-  <input type="text" name="CheckMacValue" value="<%= @allpay.CheckMacValue %>">
+<form action="<%= Allpay.client.api_host %>/Cashier/AioCheckOut" method="post" style="display: none">
+  <% @params.each do |key, value| %>
+    <input type="text" name="<%= key %>" value="<%= value %>" >
+  <% end %>
   <input type="submit">
 </form>
 <script>document.forms[0].submit()</script>
