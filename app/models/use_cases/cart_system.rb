@@ -1,5 +1,8 @@
 module UseCases
   module CartSystem
+    class Error < RuntimeError; end
+    class OrderIsPaid < Error; end
+
     module_function
 
     def add_product_to_cart product, cart
@@ -14,6 +17,14 @@ module UseCases
         order = Order.create! params
         cart.line_items.update_all(order_id: order.id, cart_id: nil)
         order
+      end
+    end
+
+    def create_transaction_from_order order
+      if order.paid?
+        raise OrderIsPaid, 'A paid order can not create transaction'
+      else
+        order.transactions.create
       end
     end
   end

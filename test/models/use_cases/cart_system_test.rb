@@ -1,4 +1,6 @@
 require 'test_helper'
+require 'minitest/mock'
+
 module UseCases
   class CartSystemTest < ActiveSupport::TestCase
     def setup
@@ -40,9 +42,23 @@ module UseCases
       assert_equal line_item_ids, order.line_items.pluck(:id).sort
     end
 
-    test "建立訂單後清空購物車" do
+    test '建立訂單後清空購物車' do
       CartSystem.create_order_from_cart @cart, @order_params
       assert @cart.line_items.empty?
+    end
+
+    test '從訂單建立交易' do
+      order = CartSystem.create_order_from_cart @cart, @order_params
+      transaction = CartSystem.create_transaction_from_order order
+      assert transaction.persisted?
+    end
+
+    test '已付款的訂單無法建立交易' do
+      order = Minitest::Mock.new
+      order.expect(:paid?, true)
+      assert_raises CartSystem::OrderIsPaid do
+        CartSystem.create_transaction_from_order order
+      end
     end
   end
 end
