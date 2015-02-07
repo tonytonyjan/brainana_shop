@@ -12,5 +12,17 @@ class AllpayController < ApplicationController
 
   # post /allpay/callback
   def callback
+    if Allpay.client.verify_mac request.POST
+      Transaction.find_by!(trade_number: params[:MerchantTradeNo]).update!(params: request.POST)
+      render text: :'1|OK'
+    else
+      render text: :'0|wrong mac value'
+    end
+  rescue ActiveRecord::RecordNotFound
+    render text: :'0|transaction record not found'
+  rescue ActiveRecord::RecordNotSaved
+    render text: :'0|transaction not saved'
+  rescue
+    render text: "0|#{$!}"
   end
 end

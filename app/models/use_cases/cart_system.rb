@@ -24,7 +24,7 @@ module UseCases
       if order.paid?
         raise OrderIsPaid, 'A paid order can not create transaction'
       else
-        order.transactions.create
+        order.transactions.create!
       end
     end
   end
