@@ -1,4 +1,5 @@
 class AllpayController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :callback
   # post /allpay/form/:order_id
   def form
     order = Order.find params[:order_id]
