@@ -64,7 +64,7 @@ class Admin::TransactionsController < AdminController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_transaction
-      @admin_transaction = Admin::Transaction.find(params[:id])
+      @admin_transaction = Admin::Transaction.find_by(trade_number: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
