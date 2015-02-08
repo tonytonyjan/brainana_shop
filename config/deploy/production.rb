@@ -1,0 +1,1 @@
+server 'shop-demo.brainana.com', user: 'rails', roles: %w[app web db]
