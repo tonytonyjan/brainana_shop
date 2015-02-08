@@ -14,6 +14,6 @@ git clone
 cd brainana_shop
 bundle
 cp config/application.yml.example config/application.yml
-bin/rake db:fixtures:load
+bin/rake db:setup db:fixtures:load
 rails server
 ```
