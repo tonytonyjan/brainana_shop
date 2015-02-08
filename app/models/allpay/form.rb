@@ -14,7 +14,6 @@ module Allpay
         TradeDesc: Settings.allpay.trade_desc,
         ItemName: item_name,
         ReturnURL: Settings.allpay.return_url,
-        ClientBackURL: Settings.allpay.client_back_url,
         ChoosePayment: 'Credit'
       }.merge!(@override_params)
       ret[:CheckMacValue] = Allpay.client.make_mac(ret)
