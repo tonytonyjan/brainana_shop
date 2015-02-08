@@ -1,0 +1,22 @@
+default: &default
+  allpay:
+    merchant_id: 2000132 # 官方的測試 id、key 與 iv
+    hash_key: 5294y06JbISpM5x9
+    hash_iv: v77hoKGq4kWxNNIS
+    trade_desc: 腦袋有動雜貨店
+
+    return_url: RETURN_URL
+    # return_url 用於接收從歐付寶送來的交易結果，如果你在本地端開發，
+    # 可以到 http://requestb.in 申請一組暫時的網址來測 callback，
+    # 如果你有固定 IP 或網域，那應該設定成 `http://你的網域/allpay/callback`。
+
+    mode: :test
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
