@@ -9,3 +9,13 @@
   <%= f.text_field :address, placeholder: '運送地址' %>
   <%= f.submit '送出' %>
 <% end %>
+<hr>
+<% if Rails.env.development? %>
+<table>
+  <tbody>
+    <tr><td>信用卡測試卡號</td><td>4311-9522-2222-2222</td></tr>
+    <tr><td>信用卡測試安全碼</td><td>222</td></tr>
+    <tr><td>信用卡測試有效年月</td><td>設定在未來時間即可</td></tr>
+  </tbody>
+</table>
+<% end %>
