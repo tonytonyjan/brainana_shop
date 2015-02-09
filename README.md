@@ -5,6 +5,12 @@
 - 使用 [`allpay_client`](https://github.com/tonytonyjan/allpay) 串接歐付寶。
 - 使用 [`adminscaffold`](https://github.com/tonytonyjan/admin_scaffold) 產生後台。
 
+## 歐付寶測試信用卡
+
+信用卡測試卡號：4311-9522-2222-2222  
+信用卡測試安全碼：222  
+信用卡測試有效年月：設定在未來時間即可
+
 ## 啟動
 
 ```
