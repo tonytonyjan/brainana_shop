@@ -5,7 +5,7 @@ class LineItemTest < ActiveSupport::TestCase
     assert line_items(:one).destroy
   end
   test '屬於訂單時，不可刪' do
-    UseCases::CartSystem.create_order_from_cart carts(:my_cart),
+    CartService.create_order_from_cart carts(:my_cart),
       first_name: :Weihang,
       last_name: :Jian,
       address: :Taiwan,

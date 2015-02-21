@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find params[:id]
-    UseCases::CartSystem.fetch_transactions @order if Rails.env.development?
+    CartService.fetch_transactions @order if Rails.env.development?
     @line_items = @order.line_items.includes(:product)
     @total_price = @order.price
     @transactions = @order.transactions.order(created_at: :desc)
@@ -24,9 +24,9 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = UseCases::CartSystem.create_order_from_cart current_cart, order_params
+    @order = CartService.create_order_from_cart current_cart, order_params
     redirect_to allpay_form_path(@order)
-  rescue UseCases::CartSystem::CartIsEmpty
+  rescue CartService::CartIsEmpty
     @order = Order.new order_params
     flash.now.alert = '購物車是空的'
     render :new
